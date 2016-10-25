@@ -1,0 +1,23 @@
+<div>
+  <h3>What is your favourite color?</h3>
+  <form>
+      <label ng-click="secondRadioClicked()">
+        <a href="#/third">
+          <input type="radio" value="Red" ng-model="second" name="colorChoice">
+        Red
+      </a>
+      </label>
+      <label ng-click="secondRadioClicked()" href="#/second">
+        <a href="#/third">
+        <input type="radio" value="Green" ng-model="second" name="colorChoice">
+        Green
+        </a>
+      </label>
+      <label ng-click="secondRadioClicked()" href="#/second">
+        <a href="#/third">
+        <input type="radio" value="Blue" ng-model="second" name="colorChoice">
+        Blue
+        </a>
+      </label>
+  </form>
+</div>
