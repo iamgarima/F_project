@@ -17,10 +17,24 @@
     <div>
       <label>
       Enter your name:
-        <input type="text" ng-model="name">
-        <button class="btn btn-default" ng-click="clicked()"><a href="#/first">Go</a></button>
+        <input type="text" ng-model="name" ng-cloak>
+        <button class="btn btn-default" ng-click="clicked()"><a href="#/questions">Go</a></button>
       </label>
     </div>
     <div ng-view></div>
+    <div id="qlist">
+      <div ng-repeat="question in questions">
+        <h3>{{question.statement}}</h3>
+        <div ng-repeat="">
+          <h4>You Answered</h4>
+          <img ng-src="{{question.ans}}"
+          <h4>Right Answer</h4>
+          <img ng-src="{{question.ans}}">
+        </div>
+      </div>
+    </div>
+
+    
+
   </body>
 </html>

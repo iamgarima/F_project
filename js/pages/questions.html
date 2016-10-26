@@ -1,0 +1,10 @@
+<div>
+  <h3>{{currentQuestion.statement}}</h3>
+  <form>
+      <label ng-click="next()" ng-repeat="currentQuestion in currentQuestion.options">
+          <input type="radio" value="Dogs" name="petChoice" ng-model="result" ng-value="currentQuestion">
+        <img ng-src="{{currentQuestion}}">
+      </label>
+  </form>
+  {{result}}
+</div>

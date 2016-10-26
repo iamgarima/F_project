@@ -1,31 +1,57 @@
 var myApp = angular.module('myApp', ['ngMessages', 'ngResource', 'ngRoute']);
 
+var questions = [
+  {
+    'statement': 'Which is your fav pet?',
+    'options': ['http://placehold.it/300/text=garima+rocks', 'http://placehold.it/300/text=garima+lols', 'http://placehold.it/300/text=garima+walks'],
+    'ans': 'http://placehold.it/300/text=garima+rocks'
+  },
+  {
+    'statement': 'What is your favourite color?',
+    'options': ['http://placehold.it/300/text=garima+rocks', 'http://placehold.it/300/text=garima+lols', 'http://placehold.it/300/text=garima+walks'],
+    'ans': 'http://placehold.it/300/text=garima+rocks'
+  },
+  {
+    'statement': 'What is your hobby?',
+    'options': ['http://placehold.it/300/text=garima+rocks', 'http://placehold.it/300/text=garima+lols', 'http://placehold.it/300/text=garima+walks'],
+    'ans': 'http://placehold.it/300/text=garima+rocks'
+  },
+  {
+    'statement': 'In which language do you like to program?',
+    'options': ['http://placehold.it/300/text=garima+rocks', 'http://placehold.it/300/text=garima+lols', 'http://placehold.it/300/text=garima+walks'],
+    'ans': 'http://placehold.it/300/text=garima+rocks'
+  },
+  {
+    'statement': 'Which is your favourite company?',
+    'options': ['http://placehold.it/300/text=garima+rocks', 'http://placehold.it/300/text=garima+lols', 'http://placehold.it/300/text=garima+walks'],
+    'ans': 'http://placehold.it/300/text=garima+rocks'
+  }
+
+];
 
 myApp.config(function($routeProvider) {
   $routeProvider
-    .when('/first', {
-      templateUrl: 'js/pages/first.html',
-      controller: 'appController'
-    })
-    .when('/second', {
-      templateUrl: 'js/pages/second.html',
-      controller: 'appController'
-    })
-    .when('/third', {
-      templateUrl: 'js/pages/third.html',
+    .when('/questions', {
+      templateUrl: 'js/pages/questions.html',
       controller: 'appController'
     })
 });
 
-// myApp.directive('', function() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: 'dir.html',
-//     replace: true
-//   };
-// });
+myApp.controller('appController', ['$scope', function($scope) {
+  $scope.result = 'dogs';
+  var currentQuestionNumber = 0;
+  $scope.currentQuestion = questions[currentQuestionNumber];
 
-myApp.controller('appController', ['$scope', '$log', function($scope, $log) {
+  $scope.next = function() {
+    ++currentQuestionNumber
+    if(currentQuestionNumber < questions.length) {
+      $scope.currentQuestion = questions[currentQuestionNumber];
+      $('#qlist').hide();
+    }
+    else {
+      $('#qlist').show();
+    }
+  };
 
   $scope.name = '';
   $scope.nameArr = [];
@@ -33,18 +59,5 @@ myApp.controller('appController', ['$scope', '$log', function($scope, $log) {
     $scope.nameArr.push($scope.name);
     $('label').hide();
   };
-  $scope.first = '';
-  $scope.answerArr = [];
-  $scope.firstRadioClicked = function() {
-    $scope.answerArr.push($("input[name='petChoice']:checked").val());
-    $('div').hide();
-  };
-  $scope.second = '';
-  $scope.firstRadioClicked = function() {
-    $scope.answerArr.push($("input[name='colorChoice']:checked").val());
-    $('div').hide();
-  };
-
-
 
 }]);
